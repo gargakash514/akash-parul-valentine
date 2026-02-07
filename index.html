@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash ❤️ Parul</title>
+  <style>
+    *{box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ff758c,#ff7eb3);padding:16px}
+    .card{background:#fff;max-width:360px;width:100%;padding:22px;border-radius:22px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+    img{width:100%;border-radius:16px;margin-bottom:14px}
+    h1{color:#ff4d6d;margin:6px 0 8px;font-size:26px}
+    p{color:#555;line-height:1.6;margin:8px 0}
+    .btns{margin-top:14px}
+    button{padding:12px 22px;border:none;border-radius:30px;font-size:16px;cursor:pointer}
+    #yes{background:#ff4d6d;color:#fff;margin-right:10px}
+    #no{background:#ddd;color:#333;position:absolute}
+    .hint{font-size:12px;color:#999;margin-top:10px}
+    .hearts span{position:fixed;bottom:-40px;font-size:22px;animation:float 6s linear infinite;pointer-events:none}
+    @keyframes float{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-120vh);opacity:0}}
+  </style>
+</head>
+<body>
+
+<audio id="bgm">
+  <!-- Put your Hindi instrumental here and name it exactly music.mp3 -->
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <!-- Put your photo in the same folder and name it exactly photo.jpg -->
+  <img src="photo.jpg" alt="Akash and Parul" />
+
+  <h1>My Parul ❤️</h1>
+  <p>
+    From the day you became my wife,<br>
+    my life found its calm, its strength, its home.<br><br>
+    Every laugh, every fight, every dream —<br>
+    I want all of it with you, always.
+  </p>
+
+  <p><strong>Will you be my Valentine, forever?</strong></p>
+
+  <div class="btns">
+    <button id="yes" onclick="yesClick()">Yes, my husband 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+  <div class="hint">(Tap Yes for a surprise 💕)</div>
+</div>
+
+<div class="hearts"></div>
+
+<script>
+  const noBtn=document.getElementById('no');
+  const music=document.getElementById('bgm');
+  noBtn.addEventListener('mouseover',()=>{
+    const x=Math.random()*(window.innerWidth-100);
+    const y=Math.random()*(window.innerHeight-100);
+    noBtn.style.left=x+'px';noBtn.style.top=y+'px';
+  });
+  function yesClick(){
+    music.play();
+    document.querySelector('.card').innerHTML=`
+      <h1>Akash ❤️ Parul</h1>
+      <p>Thank you for choosing me again.<br>You are my wife, my Valentine,<br>my today and all my tomorrows. 💍✨</p>
+      <p><strong>I love you endlessly.</strong></p>
+    `;
+    const c=document.querySelector('.hearts');
+    for(let i=0;i<40;i++){const s=document.createElement('span');s.textContent='❤️';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(Math.random()*3+3)+'s';c.appendChild(s)}
+  }
+</script>
+</body>
+</html>
